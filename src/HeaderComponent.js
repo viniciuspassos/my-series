@@ -26,6 +26,7 @@ const HeaderComponent = () =>{
           <Nav className='ml-auto' navbar></Nav>
             <NavItem>
               <NavLink tag={Link} to='/generos'> Genêros</NavLink>
+              <NavLink tag={Link} to='/generos/novo'> Cadastrar Genêro</NavLink>
             </NavItem>
         </Collapse>
         </Navbar>

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom'
 const Genres = () => {
 
-  const [genres, setGenres] = useState({});
+  const [genres, setGenres] = useState([]);
   useEffect(() => {
     axios.get('/api/genres').then(resp => {
       setGenres(inicialResp => resp.data.data)
     })
   }, [])
-  console.log(genres);
   if (genres.length === 0 ){
     return (
       <div className="container">
@@ -24,14 +23,25 @@ const Genres = () => {
       <tr key={genreData.id}>
         <th scope="row">{genreData.id}</th>
         <td>{genreData.name}</td>
-        <td><button>*</button></td>
+        <td>
+          <button className='btn btn-danger' onClick={()=> deleteGenre(genreData.id)}>Remover</button>
+          <Link to={'/generos/'+genreData.id} className="btn btn-warning">Editar</Link>
+        </td>
       </tr>
     )
   })
 
+  const deleteGenre = (id) =>{
+    axios.delete(`/api/genres/${id}`).then(resp => {
+      const newGenreList = genres.filter(item => item.id !== id)
+      setGenres(oldGenreList => newGenreList)
+    })
+  }
+
   return (
-    <div>
-      <h1> Generos</h1>
+    <div className="container">
+      <h1> Genêros</h1>
+      <Link to='/generos/novo' className="btn btn-primary"> Novo genêro</Link>
       <table className="table table-striped">
         <thead>
           <tr>
