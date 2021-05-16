@@ -12,6 +12,7 @@ const Genres = () => {
   if (genres.length === 0 ){
     return (
       <div className="container">
+        <Link to='/generos/novo' className="btn btn-primary"> Novo genêro</Link>
         <div className="alert alert-warning" role="alert">
         Você não possui gêneros cadastrados!
         </div>

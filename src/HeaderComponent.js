@@ -18,19 +18,22 @@ const HeaderComponent = () =>{
     }
   
     return (
-      <div >
-        <Navbar color='light' light expand='md'>
-        <NavbarBrand tag={Link} to='/' >Minhas Séries</NavbarBrand>
-        <NavbarToggler onClick={toggle}/>
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className='ml-auto' navbar></Nav>
-            <NavItem>
-              <NavLink tag={Link} to='/generos'> Genêros</NavLink>
-              <NavLink tag={Link} to='/generos/novo'> Cadastrar Genêro</NavLink>
-            </NavItem>
-        </Collapse>
-        </Navbar>
-      </div>
+      <Navbar color='light' light expand='md'>
+        <div className='container'>
+          <NavbarBrand tag={Link} to='/' style={{marginRight:"70%"}} >Minhas Séries</NavbarBrand>
+          <NavbarToggler onClick={toggle}/>
+          <Collapse isOpen={isOpen} navbar>
+            <Nav className='ml-auto' navbar>
+              <NavItem>
+                <NavLink tag={Link} to='/series'> Series</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} to='/generos'> Genêros</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </div>
+      </Navbar>
     );
   
   }
